@@ -1,5 +1,7 @@
 // Copyright 2000-2021 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
 import androidx.compose.desktop.Window
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
@@ -39,7 +41,7 @@ fun botonTwitter(){
         onClick = { launchChrome("twitter.com") },
         colors = ButtonDefaults.textButtonColors(backgroundColor = twitterBlue)
     ) {
-        Text("Twitter", fontSize = 15.sp,fontFamily = FontFamily.Serif,color = Color.White)
+        Text("Twitter", fontSize = 11.sp,fontFamily = FontFamily.Serif,color = Color.White)
     }
 }
 @Composable
@@ -50,7 +52,7 @@ fun botonInstagram(){
         onClick = { launchChrome("instagram.com") },
         colors = ButtonDefaults.textButtonColors(backgroundColor = instagramPink)
     ) {
-        Text("Instagram", fontSize = 15.sp,fontFamily = FontFamily.Serif,color = Color.White)
+        Text("Instagram", fontSize = 11.sp,fontFamily = FontFamily.Serif,color = Color.White)
     }
 }
 
@@ -74,11 +76,12 @@ fun paint(){
         )
         {
             botonContador()
+
             Row(
                 Modifier.padding(top = 8.dp)
             ) {
-            botonTwitter()
-            botonInstagram()
+                Column(Modifier.padding(start = 4.dp)) { botonTwitter() }
+                Column(Modifier.padding(start = 4.dp)) { botonInstagram() }
         }
         }
     }

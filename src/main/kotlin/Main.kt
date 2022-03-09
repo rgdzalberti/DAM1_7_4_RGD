@@ -7,12 +7,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.input.key.Key.Companion.R
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.Window
+
 
 
 fun launchChrome(link: String){
@@ -61,7 +63,11 @@ fun botonInstagram(){
 
 @Composable
 fun botonSonido(){
-    Button(onClick = {launchChrome("instagram.com")}
+
+    var path = System.getProperty("user.dir")
+    path = path + "\\src\\main\\resources"
+
+    Button(onClick = {Runtime.getRuntime().exec(arrayOf("cmd", "/c", "cd ${path}","b.mp3"))}
     )
     {
         Icon(

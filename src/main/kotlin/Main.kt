@@ -1,8 +1,10 @@
 // Copyright 2000-2021 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -22,8 +24,18 @@ fun launchChrome(link: String){
     Runtime.getRuntime().exec(arrayOf("cmd", "/c", "start chrome ${link}"))
 }
 
-fun playSound(path: String){
 
+@Composable
+fun textField(){
+    var text by rememberSaveable { mutableStateOf("Text") }
+
+    TextField(
+        value = text,
+        onValueChange = {
+            text = it
+        },
+        label = { Text("Label") }
+    )
 }
 
 @Composable
@@ -98,11 +110,32 @@ fun paint(){
     Surface(
         color = background,
         modifier = Modifier
-            .fillMaxSize(),
+
     )
     {
         ImageResourceDemo()
 
+        Row(
+            Modifier
+                .background(Color(0xFF085A92))
+                .fillMaxWidth()
+                .height(50.dp)
+                .padding(12.dp),
+
+        ) {
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+
+            ){
+
+                Text("Trabajo Ricardo", fontSize = 23.sp,fontFamily = FontFamily.Serif,color = Color.White)
+
+            }
+
+            textField()
+        }
         Column(
             modifier = Modifier
                 .fillMaxSize(),
@@ -111,7 +144,6 @@ fun paint(){
 
         )
         {
-
 
             botonContador()
 
@@ -122,6 +154,7 @@ fun paint(){
                 Column(Modifier.padding(start = 4.dp)) { botonInstagram() }
         }
             Column(Modifier.padding(top = 8.dp)) { botonSonido() }
+
         }
     }
 }

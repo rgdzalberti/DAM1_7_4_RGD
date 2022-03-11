@@ -67,7 +67,7 @@ fun botonSonido(){
     var path = System.getProperty("user.dir")
     path = path + "\\src\\main\\resources"
 
-    Button(onClick = {Runtime.getRuntime().exec(arrayOf("cmd", "/c", "cd ${path}","b.mp3"))}
+    Button(onClick = {Runtime.getRuntime().exec(arrayOf("cmd", "/c", "cd ${path} & b.mp3"))}
     )
     {
         Icon(

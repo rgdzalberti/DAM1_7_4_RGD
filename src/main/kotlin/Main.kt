@@ -79,7 +79,7 @@ fun botonSonido(){
 
 @Composable
 fun ImageResourceDemo() {
-    val image: Painter = painterResource("a.jpg")
+    val image: Painter = painterResource("background.jpg")
     Image(painter = image,contentDescription = "")
 }
 

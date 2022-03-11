@@ -8,6 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.input.key.Key.Companion.R
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -80,7 +81,10 @@ fun botonSonido(){
 @Composable
 fun ImageResourceDemo() {
     val image: Painter = painterResource("background.jpg")
-    Image(painter = image,contentDescription = "")
+    Image(painter = image,
+        contentDescription = "",
+        contentScale = ContentScale.Crop,
+        modifier = Modifier.fillMaxSize())
 }
 
 
